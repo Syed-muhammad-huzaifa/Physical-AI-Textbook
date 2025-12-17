@@ -1,55 +1,126 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: 1.0.0 → 1.0.0 (initial constitution for project)
+Modified principles: None (new constitution)
+Added sections: All sections (new constitution)
+Removed sections: None
+Templates requiring updates:
+- .specify/templates/plan-template.md ✅ updated
+- .specify/templates/spec-template.md ✅ updated
+- .specify/templates/tasks-template.md ✅ updated
+- .specify/templates/commands/*.md ⚠ pending
+Runtime guidance docs: ⚠ pending
+Follow-up TODOs: None
+-->
+# Humanoid & Robotics AI Book Platform Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### 1. Grounded & Deterministic AI
+All AI responses MUST be grounded strictly in retrieved book content. Hallucinated or fabricated answers are forbidden.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### 2. Textbook-First Experience
+The platform MUST feel like a technical textbook, not a marketing site. Readability and clarity ALWAYS take priority over visuals.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### 3. Feature Isolation
+Each feature (chat, personalization, translation, UI sections) MUST be independently testable.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+## Platform & Stack Standards
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Book Platform
+- The book MUST be built with Docusaurus
+- The book MUST be deployed to GitHub Pages
+- All content MUST be version-controlled
 
-### [PRINCIPLE_6_NAME]
+### Backend & AI
+- Backend framework: FastAPI
+- RAG orchestration: OpenAI Agents SDK / ChatKit SDK
+- Vector DB: Qdrant Cloud (Free Tier)
+- Relational DB: Neon Serverless Postgres
+- A single embedding model MUST be used consistently
 
+## RAG Chatbot Rules
 
-[PRINCIPLE__DESCRIPTION]
+- Answers MUST come ONLY from retrieved book content
+- If no relevant content exists, the system MUST say it does not know
+- Source chapter or section MUST be referenced
+- Selected-text-only answering MUST be supported
+- Selected-text mode MUST NOT use global context
+- External internet access is forbidden
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## UX / UI DESIGN CONSTITUTION (FRONTEND LAW)
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Design Identity
+- Theme name: Robotics Lab
+- Tone: technical, calm, futuristic, readable
+- Dark-mode first
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Typography
+- Headings: Space Grotesk (600–700)
+- Body: Inter (400–600)
+- Body size: 16–18px
+- Line height: 1.6–1.8
+- Max paragraph width: 70–78ch
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Color Tokens
+- Background: #070A12
+- Surface: #0B1220
+- Border: rgba(255,255,255,0.08)
+- Text: #EAF0FF
+- Muted: rgba(234,240,255,0.72)
+- Accent: #22D3EE
+- Optional secondary accent: #8B5CF6
+
+### Layout Rules
+- 8px spacing system
+- Section spacing: 48–72px
+- Cards: radius 16px, padding 18–22px
+- Grid gaps: 12–16px
+- Navbar: blur + thin border
+
+### Motion Rules (Minimal & Purposeful)
+- Section entry: single-time fade + slide-up (6–12px max)
+- Card hover: lift 2–4px with very soft glow or border emphasis
+- Buttons/CTAs: subtle press feedback only
+- Motion MUST never cause layout shift
+- Animations MUST respect prefers-reduced-motion
+
+Forbidden:
+- Particles, parallax, or decorative motion
+- Constant or looping animations
+- Bouncy or spring-based effects
+- Flashy neon glows
+
+### Accessibility
+- Mobile-first, no overflow
+- Accessible contrast
+- No layout shifts
+- Text must remain readable on all devices
+
+## Authentication & Personalization (Bonus)
+
+- Authentication MUST use better-auth
+- Signup MUST collect software & hardware background
+- Personalized content MUST adapt tone and depth only
+- Meaning of original content MUST NOT change
+- Urdu translation MUST preserve technical accuracy
+
+## Quality Gates
+
+The project is successful ONLY if:
+- Book is live on GitHub Pages
+- RAG chatbot works with grounded answers
+- Selected-text mode works correctly
+- UI matches Robotics Lab standards
+- Mobile UX is flawless
+- No hallucinations observed
+
+## Final Rule
+If design beauty conflicts with readability:
+**Readability ALWAYS wins.**
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution defines the immutable standards for a unified AI-driven robotics textbook with an embedded RAG chatbot and a professional frontend experience. All features, UI components, AI behavior, and integrations MUST comply with this Constitution. Amendment procedure requires explicit approval from project stakeholders with documentation of the changes and their impact on the system. Versioning follows semantic versioning principles where major changes affect core principles, minor changes add new sections or expand guidance, and patch changes address clarifications or typos.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-18 | **Last Amended**: 2025-12-18
