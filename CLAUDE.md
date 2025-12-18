@@ -208,3 +208,10 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- Python 3.11+ (for ROS2 Jazzy/Humble compatibility), Markdown/MDX + Docusaurus v3.x, ROS2 Jazzy/Humble, Node.js 18+, npm/yarn (001-robotics-book-content)
+- File-based (MDX documents in docs/ directory) (001-robotics-book-content)
+
+## Recent Changes
+- 001-robotics-book-content: Added Python 3.11+ (for ROS2 Jazzy/Humble compatibility), Markdown/MDX + Docusaurus v3.x, ROS2 Jazzy/Humble, Node.js 18+, npm/yarn
