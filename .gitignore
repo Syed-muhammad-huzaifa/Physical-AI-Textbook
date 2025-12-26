@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.ENV
+.venv/
+*.env
+*.swp
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp
+.pnp.js
+.next/
+.nuxt/
+dist/
+build/
+
+# Environment variables
+.env*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backend specific
+backend/.venv/
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+
+# Better Auth
+.better-auth/*.log
+.better-auth/node_modules/
+
+# Docusaurus
+docs/.docusaurus/
+docs/build/
+docs/node_modules/
+docs/coverage/
+docs/.cache/
+docs/.env
