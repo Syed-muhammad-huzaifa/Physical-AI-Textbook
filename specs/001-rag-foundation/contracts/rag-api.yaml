@@ -1,0 +1,244 @@
+# API Contracts: RAG Foundation
+
+## Health Check Endpoint
+**Path**: `GET /health`
+**Description**: Verify system connectivity and health status
+**Authentication**: Optional (may be public)
+
+### Request
+```
+GET /health
+```
+
+### Response
+**Success (200 OK)**:
+```json
+{
+  "status": "ok"
+}
+```
+
+**Error (503 Service Unavailable)**:
+```json
+{
+  "status": "error",
+  "error": "Qdrant connection failed"
+}
+```
+
+## Ingest Directory Endpoint
+**Path**: `POST /rag/ingest-dir`
+**Description**: Process all markdown files from the configured directory and store embeddings in Qdrant
+**Authentication**: Required (use existing auth dependency)
+
+### Request
+```json
+{
+  "wipe_collection": false
+}
+```
+
+### Response
+**Success (200 OK)**:
+```json
+{
+  "files_ingested": 25,
+  "chunks_added": 640
+}
+```
+
+**Request Validation Error (422 Unprocessable Entity)**:
+```json
+{
+  "detail": "Invalid request parameters"
+}
+```
+
+## Retrieve Chunks Endpoint
+**Path**: `POST /rag/retrieve`
+**Description**: Retrieve relevant chunks for a given query from Qdrant
+**Authentication**: Required (use existing auth dependency)
+
+### Request
+```json
+{
+  "query": "What is a ROS 2 node?",
+  "top_k": 6,
+  "filters": {
+    "doc_id": "MODULE-1/ROS2-ARCHITECTURE.md"
+  }
+}
+```
+
+### Response
+**Success (200 OK)**:
+```json
+{
+  "results": [
+    {
+      "score": 0.82,
+      "doc_id": "MODULE-1/ROS2-ARCHITECTURE.md",
+      "chunk_id": 12,
+      "source": "MODULE-1/ROS2-ARCHITECTURE.md",
+      "text": "A ROS 2 node is an executable that uses ROS client library to communicate with other nodes..."
+    }
+  ]
+}
+```
+
+**Request Validation Error (422 Unprocessable Entity)**:
+```json
+{
+  "detail": "Query cannot be empty"
+}
+```
+
+## OpenAPI Schema
+
+```yaml
+openapi: 3.0.0
+info:
+  title: RAG Foundation API
+  version: 1.0.0
+  description: API for RAG (Retrieval Augmented Generation) system
+
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "ok"
+        '503':
+          description: System is unhealthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "error"
+                  error:
+                    type: string
+                    example: "Qdrant connection failed"
+
+  /rag/ingest-dir:
+    post:
+      summary: Ingest markdown files from directory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wipe_collection:
+                  type: boolean
+                  description: If true, clear collection before ingesting
+                  default: false
+              required:
+                - wipe_collection
+      responses:
+        '200':
+          description: Files successfully ingested
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  files_ingested:
+                    type: integer
+                    example: 25
+                  chunks_added:
+                    type: integer
+                    example: 640
+        '422':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "Invalid request parameters"
+
+  /rag/retrieve:
+    post:
+      summary: Retrieve relevant chunks for a query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: The search query
+                  example: "What is a ROS 2 node?"
+                top_k:
+                  type: integer
+                  description: Number of results to return
+                  default: 6
+                  minimum: 1
+                  maximum: 100
+                filters:
+                  type: object
+                  description: Optional filters
+                  properties:
+                    doc_id:
+                      type: string
+                      description: Filter by specific document ID
+                      example: "MODULE-1/ROS2-ARCHITECTURE.md"
+              required:
+                - query
+      responses:
+        '200':
+          description: Successfully retrieved relevant chunks
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        score:
+                          type: number
+                          format: float
+                          example: 0.82
+                        doc_id:
+                          type: string
+                          example: "MODULE-1/ROS2-ARCHITECTURE.md"
+                        chunk_id:
+                          type: integer
+                          example: 12
+                        source:
+                          type: string
+                          example: "MODULE-1/ROS2-ARCHITECTURE.md"
+                        text:
+                          type: string
+                          example: "A ROS 2 node is an executable that uses ROS client library to communicate with other nodes..."
+        '422':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    example: "Query cannot be empty"
+```

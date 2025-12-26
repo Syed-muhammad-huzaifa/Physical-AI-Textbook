@@ -212,6 +212,12 @@ See `.specify/memory/constitution.md` for code quality, testing, performance, se
 ## Active Technologies
 - Python 3.11+ (for ROS2 Jazzy/Humble compatibility), Markdown/MDX + Docusaurus v3.x, ROS2 Jazzy/Humble, Node.js 18+, npm/yarn (001-robotics-book-content)
 - File-based (MDX documents in docs/ directory) (001-robotics-book-content)
+- Python 3.11 + FastAPI, uvicorn, qdrant-client, fastembed, pydantic, httpx, python-dotenv, better-auth, openai (003-rag-chatbot-backend)
+- Neon Postgres (user profiles), Qdrant Cloud (book content embeddings) (003-rag-chatbot-backend)
+- Python 3.11 (FastAPI backend), Node.js 18+ (Better Auth service), TypeScript (Better Auth client) + Better Auth, FastAPI, Neon Postgres, Docusaurus (001-user-auth)
+- Neon Postgres (user accounts, onboarding data, sessions) (001-user-auth)
+- Python 3.11 + FastAPI, FastEmbed, Qdrant, Pydantic, python-dotenv, uvicorn (001-rag-foundation)
+- Qdrant vector database (external), existing PostgreSQL for auth (Neon Serverless) (001-rag-foundation)
 
 ## Recent Changes
 - 001-robotics-book-content: Added Python 3.11+ (for ROS2 Jazzy/Humble compatibility), Markdown/MDX + Docusaurus v3.x, ROS2 Jazzy/Humble, Node.js 18+, npm/yarn

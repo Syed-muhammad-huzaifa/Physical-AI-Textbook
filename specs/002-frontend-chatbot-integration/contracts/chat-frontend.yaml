@@ -1,0 +1,146 @@
+openapi: 3.0.0
+info:
+  title: Docusaurus Chatbot Frontend API
+  description: API contracts for frontend integration of RAG chatbot in Docusaurus
+  version: 1.0.0
+paths:
+  /chat:
+    post:
+      summary: Process user queries in Docusaurus frontend
+      description: |
+        Processes user queries from the Docusaurus frontend in two modes:
+        - RAG mode: Retrieves context from entire book knowledge base
+        - Selection mode: Works with provided selected text only
+      servers:
+        - url: http://localhost:8000  # Replace with your backend URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FrontendChatRequest'
+      responses:
+        '200':
+          description: Successful response from chatbot
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FrontendChatResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    FrontendChatRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          description: The user's question or input text
+          example: "Explain ROS 2 nodes"
+        mode:
+          type: string
+          enum: [rag, selection]
+          description: Processing mode
+          example: "rag"
+        selected_text:
+          type: string
+          description: Text selected by user in selection mode
+          example: "Robotic systems require precise control algorithms..."
+        top_k:
+          type: integer
+          minimum: 1
+          maximum: 100
+          description: Number of chunks to retrieve (RAG mode only)
+          example: 6
+          default: 6
+        filters:
+          type: object
+          description: Filters for document retrieval (RAG mode only)
+          properties:
+            doc_id:
+              type: string
+              description: Document ID filter
+              example: "MODULE-1/ROS2-ARCHITECTURE.md"
+      required:
+        - query
+        - mode
+      allOf:
+        - if:
+            properties:
+              mode:
+                const: "rag"
+          then:
+            properties:
+              query: { type: string }
+              mode: { const: "rag" }
+        - if:
+            properties:
+              mode:
+                const: "selection"
+          then:
+            required: ["selected_text"]
+            properties:
+              query: { type: string }
+              mode: { const: "selection" }
+              selected_text: { type: string }
+
+    FrontendChatResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: The chatbot's response to the query
+          example: "ROS 2 nodes are..."
+        citations:
+          type: array
+          description: References to source documents
+          items:
+            $ref: '#/components/schemas/Citation'
+        mode:
+          type: string
+          enum: [rag, selection]
+          description: The processing mode
+          example: "rag"
+      required:
+        - answer
+        - citations
+        - mode
+
+    Citation:
+      type: object
+      properties:
+        doc_id:
+          type: string
+          description: Document identifier
+          example: "MODULE-1/ROS2-ARCHITECTURE.md"
+        chunk_id:
+          type: integer
+          description: Chunk identifier within the document
+          example: 1
+      required:
+        - doc_id
+        - chunk_id
+
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Error message
+          example: "Query cannot be empty"

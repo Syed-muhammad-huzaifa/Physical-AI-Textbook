@@ -256,6 +256,33 @@ html {
   margin-top: 1.5rem;
 }
 
+/* Form control styling to match Docusaurus */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #eaf0ff;
+  background-color: #0B1220;
+  background-clip: padding-box;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  color: #eaf0ff;
+  background-color: #0B1220;
+  border-color: #22D3EE;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(34, 211, 238, 0.25);
+}
+
 /* Ensure no layout shifts */
 * {
   box-sizing: border-box;
