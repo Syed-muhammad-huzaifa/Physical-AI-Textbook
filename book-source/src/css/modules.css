@@ -1,0 +1,295 @@
+/**
+ * Module Card Styles
+ * Feature: 004-ui-ux-design
+ * User Story 2: Module Navigation
+ */
+
+/* ==================== MODULES PAGE LAYOUT ==================== */
+
+.hr-modules {
+  padding: var(--hr-space-8);
+  max-width: var(--hr-max-width-content);
+  margin: 0 auto;
+}
+
+.hr-modules__header {
+  text-align: center;
+  margin-bottom: var(--hr-space-10);
+}
+
+.hr-modules__title {
+  font-family: var(--hr-font-heading);
+  font-size: var(--hr-text-3xl);
+  font-weight: 600;
+  color: var(--hr-color-text-primary);
+  margin-bottom: var(--hr-space-3);
+}
+
+.hr-modules__description {
+  font-family: var(--hr-font-body);
+  font-size: var(--hr-text-lg);
+  color: var(--hr-color-text-secondary);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+/* ==================== MODULE CARD GRID ==================== */
+
+.hr-modules__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--hr-space-6);
+}
+
+/* ==================== MODULE CARD ==================== */
+
+.hr-module-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--hr-color-bg-secondary);
+  border: 1px solid var(--hr-color-border);
+  border-radius: var(--hr-radius-lg);
+  padding: var(--hr-space-6);
+  text-decoration: none;
+  transition: transform var(--hr-transition-normal),
+              box-shadow var(--hr-transition-normal),
+              border-color var(--hr-transition-normal);
+  overflow: hidden;
+}
+
+/* Hover effects - lift and glow */
+.hr-module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hr-shadow-glow);
+  border-color: var(--hr-color-border-hover);
+}
+
+/* Focus visible for keyboard navigation */
+.hr-module-card:focus-visible {
+  outline: 2px solid var(--hr-color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* Card header */
+.hr-module-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--hr-space-4);
+}
+
+/* Card icon */
+.hr-module-card__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hr-color-bg-tertiary);
+  border-radius: var(--hr-radius-md);
+  color: var(--hr-color-accent-primary);
+  font-size: 24px;
+}
+
+/* Card title */
+.hr-module-card__title {
+  font-family: var(--hr-font-heading);
+  font-size: var(--hr-text-xl);
+  font-weight: 600;
+  color: var(--hr-color-text-primary);
+  margin: 0 0 var(--hr-space-2) 0;
+  line-height: var(--hr-line-height-tight);
+}
+
+/* Card description */
+.hr-module-card__description {
+  font-family: var(--hr-font-body);
+  font-size: var(--hr-text-sm);
+  line-height: var(--hr-line-height-normal);
+  color: var(--hr-color-text-secondary);
+  margin: 0 0 var(--hr-space-5) 0;
+  flex-grow: 1;
+}
+
+/* Card footer */
+.hr-module-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--hr-space-4);
+  border-top: 1px solid var(--hr-color-border);
+}
+
+/* Difficulty badge */
+.hr-module-card__difficulty {
+  font-family: var(--hr-font-body);
+  font-size: var(--hr-text-xs);
+  font-weight: 500;
+  padding: var(--hr-space-1) var(--hr-space-3);
+  border-radius: var(--hr-radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--hr-space-1);
+}
+
+.hr-module-card__difficulty::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Difficulty levels */
+.hr-module-card__difficulty--beginner {
+  background: rgba(34, 211, 238, 0.15);
+  color: var(--hr-color-accent-primary);
+}
+
+.hr-module-card__difficulty--intermediate {
+  background: rgba(96, 165, 250, 0.15);
+  color: var(--hr-color-accent-secondary);
+}
+
+.hr-module-card__difficulty--advanced {
+  background: rgba(167, 139, 250, 0.15);
+  color: var(--hr-color-accent-optional);
+}
+
+/* Duration indicator */
+.hr-module-card__duration {
+  font-family: var(--hr-font-body);
+  font-size: var(--hr-text-xs);
+  color: var(--hr-color-text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: var(--hr-space-1);
+}
+
+/* ==================== CARD HOVER LIFT EFFECT ==================== */
+
+.hr-module-card {
+  animation-name: hr-card-enter;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes hr-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for cards */
+.hr-modules__grid > .hr-module-card:nth-child(1) { animation-delay: 0.05s; }
+.hr-modules__grid > .hr-module-card:nth-child(2) { animation-delay: 0.1s; }
+.hr-modules__grid > .hr-module-card:nth-child(3) { animation-delay: 0.15s; }
+.hr-modules__grid > .hr-module-card:nth-child(4) { animation-delay: 0.2s; }
+.hr-modules__grid > .hr-module-card:nth-child(5) { animation-delay: 0.25s; }
+.hr-modules__grid > .hr-module-card:nth-child(6) { animation-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hr-module-card {
+    animation: none;
+  }
+}
+
+/* ==================== RESPONSIVE BREAKPOINTS ==================== */
+
+/* Mobile - Single column */
+@media (max-width: 768px) {
+  .hr-modules {
+    padding: var(--hr-space-6) var(--hr-space-4);
+  }
+
+  .hr-modules__title {
+    font-size: var(--hr-text-2xl);
+  }
+
+  .hr-modules__description {
+    font-size: var(--hr-text-base);
+  }
+
+  .hr-modules__grid {
+    grid-template-columns: 1fr;
+    gap: var(--hr-space-4);
+  }
+
+  .hr-module-card {
+    padding: var(--hr-space-5);
+  }
+}
+
+/* Tablet - 2 columns */
+@media (min-width: 769px) and (max-width: 996px) {
+  .hr-modules__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop - 3 columns */
+@media (min-width: 997px) {
+  .hr-modules__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==================== SECTION DIVIDER ==================== */
+
+.hr-section-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--hr-color-border),
+    transparent
+  );
+  margin: var(--hr-space-10) 0;
+}
+
+/* ==================== FILTER BAR ==================== */
+
+.hr-filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: var(--hr-space-3);
+  margin-bottom: var(--hr-space-8);
+  flex-wrap: wrap;
+}
+
+.hr-filter-button {
+  font-family: var(--hr-font-body);
+  font-size: var(--hr-text-sm);
+  padding: var(--hr-space-2) var(--hr-space-4);
+  background: transparent;
+  color: var(--hr-color-text-secondary);
+  border: 1px solid var(--hr-color-border);
+  border-radius: var(--hr-radius-full);
+  cursor: pointer;
+  transition: all var(--hr-transition-fast);
+}
+
+.hr-filter-button:hover {
+  border-color: var(--hr-color-accent-primary);
+  color: var(--hr-color-accent-primary);
+}
+
+.hr-filter-button--active {
+  background: var(--hr-color-accent-primary);
+  color: var(--hr-color-bg-primary);
+  border-color: var(--hr-color-accent-primary);
+}
+
+.hr-filter-button:focus-visible {
+  outline: 2px solid var(--hr-color-accent-primary);
+  outline-offset: 2px;
+}

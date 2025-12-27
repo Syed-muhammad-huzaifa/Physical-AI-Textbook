@@ -1,0 +1,151 @@
+/**
+ * Humanoid Robotics Textbook - CSS Variables
+ * Feature: 004-ui-ux-design
+ * Theme: Robotics Lab Dark Mode
+ */
+
+/* ==================== FONT IMPORTS ==================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+
+/* ==================== COLOR TOKENS ==================== */
+
+:root {
+  /* Background Colors */
+  --hr-color-bg-primary: #06080F;
+  --hr-color-bg-secondary: #0B1220;
+  --hr-color-bg-tertiary: #10192E;
+  --hr-color-bg-code: #0B1220;
+
+  /* Text Colors */
+  --hr-color-text-primary: #EAF0FF;
+  --hr-color-text-secondary: #A9B4D0;
+  --hr-color-text-muted: #7C89B0;
+
+  /* Accent Colors */
+  --hr-color-accent-primary: #22D3EE;
+  --hr-color-accent-secondary: #60A5FA;
+  --hr-color-accent-optional: #A78BFA;
+
+  /* UI State Colors */
+  --hr-color-focus: #22D3EE;
+  --hr-color-border: rgba(255, 255, 255, 0.08);
+  --hr-color-border-hover: rgba(255, 255, 255, 0.16);
+  --hr-color-error: #EF4444;
+  --hr-color-success: #22C55E;
+  --hr-color-warning: #F59E0B;
+
+  /* ==================== TYPOGRAPHY TOKENS ==================== */
+
+  /* Font Families */
+  --hr-font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --hr-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --hr-font-code: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font Sizes */
+  --hr-text-xs: 14px;
+  --hr-text-sm: 16px;
+  --hr-text-base: 17px;
+  --hr-text-lg: 18px;
+  --hr-text-xl: 20px;
+  --hr-text-2xl: 24px;
+  --hr-text-3xl: 32px;
+  --hr-text-4xl: 40px;
+  --hr-text-5xl: 48px;
+
+  /* Line Heights */
+  --hr-line-height-tight: 1.2;
+  --hr-line-height-normal: 1.6;
+  --hr-line-height-relaxed: 1.8;
+
+  /* Font Weights */
+  --hr-weight-normal: 400;
+  --hr-weight-medium: 500;
+  --hr-weight-semibold: 600;
+  --hr-weight-bold: 700;
+
+  /* ==================== SPACING TOKENS ==================== */
+
+  --hr-space-1: 4px;
+  --hr-space-2: 8px;
+  --hr-space-3: 12px;
+  --hr-space-4: 16px;
+  --hr-space-5: 20px;
+  --hr-space-6: 24px;
+  --hr-space-8: 32px;
+  --hr-space-10: 40px;
+  --hr-space-12: 48px;
+  --hr-space-16: 64px;
+
+  /* ==================== LAYOUT TOKENS ==================== */
+
+  --hr-max-width-content: 70rem;
+  --hr-max-width-text: 78ch;
+  --hr-navbar-height: 60px;
+  --hr-footer-height: auto;
+
+  /* ==================== BORDER RADIUS TOKENS ==================== */
+
+  --hr-radius-sm: 4px;
+  --hr-radius-md: 8px;
+  --hr-radius-lg: 16px;
+  --hr-radius-full: 9999px;
+
+  /* ==================== SHADOW TOKENS ==================== */
+
+  --hr-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --hr-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --hr-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+  --hr-shadow-glow: 0 0 20px rgba(34, 211, 238, 0.15);
+
+  /* ==================== TRANSITION TOKENS ==================== */
+
+  --hr-transition-fast: 150ms ease;
+  --hr-transition-normal: 300ms ease;
+  --hr-transition-slow: 500ms ease;
+
+  /* ==================== Z-INDEX TOKENS ==================== */
+
+  --hr-z-dropdown: 100;
+  --hr-z-sticky: 200;
+  --hr-z-fixed: 300;
+  --hr-z-modal-backdrop: 400;
+  --hr-z-modal: 500;
+  --hr-z-popover: 600;
+  --hr-z-tooltip: 700;
+}
+
+/* ==================== DOCUSAURUS OVERRIDES ==================== */
+
+:root {
+  /* Override Docusaurus default variables */
+  --ifm-background-color: var(--hr-color-bg-primary);
+  --ifm-background-surface-color: var(--hr-color-bg-secondary);
+  --ifm-border-color: var(--hr-color-border);
+  --ifm-color-content: var(--hr-color-text-primary);
+  --ifm-color-content-secondary: var(--hr-color-text-secondary);
+  --ifm-color-primary: var(--hr-color-accent-primary);
+  --ifm-color-secondary: var(--hr-color-accent-optional);
+  --ifm-code-font-size: var(--hr-text-sm);
+  --ifm-font-family-base: var(--hr-font-body);
+  --ifm-font-family-monospace: var(--hr-font-code);
+  --ifm-font-size-base: var(--hr-text-base);
+  --ifm-line-height-base: var(--hr-line-height-normal);
+  --ifm-container-width: var(--hr-max-width-content);
+  --ifm-container-width-xl: calc(var(--hr-max-width-content) + 4rem);
+  --ifm-card-border-radius: var(--hr-radius-lg);
+  --ifm-card-padding: var(--hr-space-5);
+  --ifm-global-spacing: var(--hr-space-4);
+  --ifm-navbar-height: var(--hr-navbar-height);
+}
+
+/* Dark mode specific overrides */
+[data-theme='dark'] {
+  --ifm-background-color: var(--hr-color-bg-primary);
+  --ifm-background-surface-color: var(--hr-color-bg-secondary);
+  --ifm-border-color: var(--hr-color-border);
+  --ifm-color-content: var(--hr-color-text-primary);
+  --ifm-color-content-secondary: var(--hr-color-text-secondary);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}

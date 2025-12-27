@@ -1,0 +1,186 @@
+/**
+ * Urdu Typography and RTL Styles
+ * Feature: 005-i18n-translation
+ * User Story 2: Urdu Content Reading
+ */
+
+/* ==================== URDU FONT ==================== */
+
+:root {
+  /* Urdu font stack - Noto Nastaliq Urdu with fallbacks */
+  --hr-font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq',
+                  'Lateef', 'Nastaliq Kasheeda', system-ui;
+}
+
+/* ==================== RTL TYPOGRAPHY ==================== */
+
+/* Urdu text in RTL mode */
+[dir='rtl'] {
+  text-align: right;
+  font-family: var(--hr-font-urdu), var(--hr-font-body);
+}
+
+/* Increased line height for Urdu readability */
+[dir='rtl'] .markdown,
+[dir='rtl'] article,
+[dir='rtl'] .doc-item-container {
+  line-height: 1.8;
+}
+
+/* Urdu paragraph spacing */
+[dir='rtl'] .markdown p {
+  margin-bottom: var(--hr-space-5);
+}
+
+/* Urdu heading adjustments */
+[dir='rtl'] .markdown h1,
+[dir='rtl'] .markdown h2,
+[dir='rtl'] .markdown h3,
+[dir='rtl'] .markdown h4,
+[dir='rtl'] .markdown h5,
+[dir='rtl'] .markdown h6 {
+  text-align: right;
+}
+
+/* ==================== RTL COMPONENT STYLES ==================== */
+
+/* Navbar RTL adjustments */
+[dir='rtl'] .navbar__item {
+  font-family: var(--hr-font-urdu), var(--hr-font-body);
+}
+
+/* Sidebar RTL adjustments */
+[dir='rtl'] .menu__link {
+  text-align: right;
+}
+
+[dir='rtl'] .menu__link--sublist::after {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+/* Table of Contents RTL adjustments */
+[dir='rtl'] .table-of-contents__link {
+  padding-left: 0;
+  padding-right: var(--hr-space-4);
+  border-left: none;
+  border-right: 2px solid transparent;
+}
+
+[dir='rtl'] .table-of-contents__link--active {
+  border-right-color: var(--hr-color-accent-primary);
+  border-left: none;
+}
+
+[dir='rtl'] .table-of-contents__link--secondary {
+  padding-right: calc(var(--hr-space-6) + var(--hr-space-3));
+}
+
+/* Prev/Next navigation RTL */
+[dir='rtl'] .pagination-nav__label {
+  text-align: right;
+}
+
+[dir='rtl'] .pagination-nav__item--next {
+  text-align: left;
+}
+
+/* ==================== LANGUAGE SELECTOR STYLING ==================== */
+
+/* Language dropdown styling */
+[dir='rtl'] .navbar__localeDropdown .navbar__link {
+  font-family: var(--hr-font-urdu), var(--hr-font-body);
+}
+
+/* Ensure proper touch target on mobile */
+.localeDropdown {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ==================== URDU-SPECIFIC ELEMENTS ==================== */
+
+/* Urdu blockquote styling */
+[dir='rtl'] .markdown blockquote {
+  border-left: none;
+  border-right: 4px solid var(--hr-color-accent-primary);
+  padding-left: 0;
+  padding-right: var(--hr-space-4);
+}
+
+/* Urdu list styling */
+[dir='rtl'] .markdown ul,
+[dir='rtl'] .markdown ol {
+  padding-left: 0;
+  padding-right: var(--hr-space-6);
+}
+
+/* Urdu table styling */
+[dir='rtl'] .markdown table {
+  text-align: right;
+}
+
+[dir='rtl'] .markdown table th,
+[dir='rtl'] .markdown table td {
+  text-align: right;
+}
+
+/* ==================== CODE BLOCKS (remain English) ==================== */
+
+/* Code blocks should NOT inherit Urdu font */
+[dir='rtl'] .prism-code,
+[dir='rtl'] code,
+[dir='rtl'] .token {
+  font-family: var(--hr-font-code) !important;
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* ==================== MOBILE RTL ==================== */
+
+@media (max-width: 768px) {
+  [dir='rtl'] .navbar {
+    flex-direction: row-reverse;
+  }
+
+  [dir='rtl'] .navbar__items {
+    flex-direction: row-reverse;
+  }
+
+  [dir='rtl'] .navbar__items--mobile {
+    flex-direction: column;
+    text-align: right;
+  }
+
+  /* Ensure no horizontal scrolling on mobile */
+  [dir='rtl'] body,
+  [dir='rtl'] html {
+    overflow-x: hidden;
+  }
+
+  /* Minimum font size for Urdu on mobile */
+  [dir='rtl'] .markdown p,
+  [dir='rtl'] .markdown li {
+    font-size: var(--hr-text-base);
+  }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+
+/* Ensure proper lang attribute display */
+[lang='ur'] {
+  font-family: var(--hr-font-urdu), var(--hr-font-body);
+}
+
+/* Screen reader only text should not affect visual layout */
+.sr-only[lang='ur'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
