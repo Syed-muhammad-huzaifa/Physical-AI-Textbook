@@ -1,0 +1,198 @@
+{
+  "homepage.hero.accent": {
+    "message": "روبوٹکس",
+    "description": "Accent word Robotics"
+  },
+  "homepage.hero.title": {
+    "message": "ہیومنائڈ {accent}",
+    "description": "Homepage hero title with accent on Robotics"
+  },
+  "homepage.hero.subtitle": {
+    "message": "ہیومنائڈ روبوٹکس کا جامع گائیڈ جو ROS2 اور AI کے ساتھ سیکھنے، پروگرامنگ، اور ذہین روبوٹ سسٹمز کی تعیناتی سکھاتا ہے۔",
+    "description": "Homepage hero subtitle describing the textbook"
+  },
+  "homepage.hero.cta.start": {
+    "message": "سیکھنا شروع کریں",
+    "description": "Primary CTA button"
+  },
+  "homepage.hero.cta.modules": {
+    "message": "ماڈیولز دیکھیں",
+    "description": "Secondary CTA button"
+  },
+  "homepage.featured.title": {
+    "message": "نمایاں ماڈیولز",
+    "description": "Featured modules heading"
+  },
+  "homepage.featured.ros2.title": {
+    "message": "ROS2 بنیادیات",
+    "description": "Featured ROS2 title"
+  },
+  "homepage.featured.ros2.description": {
+    "message": "ROS2 کی بنیادیات سیکھیں، نوڈز، ٹاپکس، سروسز، اور ایکشنز کے ساتھ۔",
+    "description": "Featured ROS2 description"
+  },
+  "homepage.featured.motion.title": {
+    "message": "موشن پلاننگ",
+    "description": "Featured motion title"
+  },
+  "homepage.featured.motion.description": {
+    "message": "ہیومنائڈ نیویگیشن کے لیے راستہ بندی کے الگورتھم سیکھیں۔",
+    "description": "Featured motion description"
+  },
+  "homepage.featured.cv.title": {
+    "message": "کمپیوٹر ویژن",
+    "description": "Featured CV title"
+  },
+  "homepage.featured.cv.description": {
+    "message": "ڈیپ لرننگ کے ذریعے ہیومنائڈز کے لیے پرسبپشن سسٹمز نافذ کریں۔",
+    "description": "Featured CV description"
+  },
+  "difficulty.beginner": {
+    "message": "ابتدائی",
+    "description": "Difficulty label beginner"
+  },
+  "difficulty.intermediate": {
+    "message": "درمیانہ",
+    "description": "Difficulty label intermediate"
+  },
+  "difficulty.advanced": {
+    "message": "اعلیٰ",
+    "description": "Difficulty label advanced"
+  },
+  "modules.header.title": {
+    "message": "سیکھنے کے ماڈیولز",
+    "description": "Modules page title"
+  },
+  "modules.header.subtitle": {
+    "message": "ہیومنائڈ روبوٹکس کے مکمل نصاب کو ایکسپلور کریں۔ بنیادیات سے AI پر مبنی کنٹرول سسٹمز تک بتدریج آگے بڑھیں۔",
+    "description": "Modules page subtitle"
+  },
+  "modules.filter.all": {
+    "message": "تمام ماڈیولز",
+    "description": "Filter all"
+  },
+  "modules.filter.beginner": {
+    "message": "ابتدائی",
+    "description": "Filter beginner"
+  },
+  "modules.filter.intermediate": {
+    "message": "درمیانہ",
+    "description": "Filter intermediate"
+  },
+  "modules.filter.advanced": {
+    "message": "اعلیٰ",
+    "description": "Filter advanced"
+  },
+  "modules.empty": {
+    "message": "اس درجہ بندی کے لیے کوئی ماڈیول دستیاب نہیں۔",
+    "description": "Modules empty state"
+  },
+  "modules.ros2.title": {
+    "message": "ROS2 بنیادیات",
+    "description": "Module card title: ROS2 fundamentals"
+  },
+  "modules.ros2.description": {
+    "message": "ROS2 کے نوڈز، ٹاپکس، سروسز، اور ایکشنز کی بنیادیات سیکھیں۔ اپنا پہلا روبوٹ کنٹرول سسٹم بنائیں۔",
+    "description": "Module card description ROS2"
+  },
+  "modules.ros2.duration": {
+    "message": "4 گھنٹے",
+    "description": "Module duration ROS2"
+  },
+  "modules.urdf.title": {
+    "message": "URDF کے ساتھ روبوٹ ماڈلنگ",
+    "description": "Module card title URDF"
+  },
+  "modules.urdf.description": {
+    "message": "Unified Robot Description Format کے ذریعے روبوٹ ماڈلز بنائیں۔ لنکس، جوائنٹس، اور ویزول پراپرٹیز طے کریں۔",
+    "description": "Module card description URDF"
+  },
+  "modules.urdf.duration": {
+    "message": "3 گھنٹے",
+    "description": "Module duration URDF"
+  },
+  "modules.motion.title": {
+    "message": "موشن پلاننگ",
+    "description": "Module card title Motion planning"
+  },
+  "modules.motion.description": {
+    "message": "MoveIt2 اور OMPL کے ساتھ ہیومنائڈ نیویگیشن کے لیے راستہ بندی سیکھیں۔",
+    "description": "Module card description Motion"
+  },
+  "modules.motion.duration": {
+    "message": "6 گھنٹے",
+    "description": "Module duration Motion"
+  },
+  "modules.cv.title": {
+    "message": "کمپیوٹر ویژن",
+    "description": "Module card title CV"
+  },
+  "modules.cv.description": {
+    "message": "OpenCV اور ڈیپ لرننگ فریم ورکس سے ہیومنائڈ پرسبپشن سسٹمز نافذ کریں۔",
+    "description": "Module card description CV"
+  },
+  "modules.cv.duration": {
+    "message": "8 گھنٹے",
+    "description": "Module duration CV"
+  },
+  "modules.manipulation.title": {
+    "message": "روبوٹ مینپولیشن",
+    "description": "Module card title manipulation"
+  },
+  "modules.manipulation.description": {
+    "message": "روبوٹک بازو کنٹرول، انورس کائنیمیٹکس، اور گراس پلاننگ میں مہارت حاصل کریں۔",
+    "description": "Module card description manipulation"
+  },
+  "modules.manipulation.duration": {
+    "message": "6 گھنٹے",
+    "description": "Module duration manipulation"
+  },
+  "modules.neural.title": {
+    "message": "نیورل نیٹ ورک کنٹرول",
+    "description": "Module card title neural control"
+  },
+  "modules.neural.description": {
+    "message": "ری انفورسمنٹ لرننگ اور ڈیپ نیٹ ورکس سے AI کنٹرولرز بنائیں۔",
+    "description": "Module card description neural control"
+  },
+  "modules.neural.duration": {
+    "message": "10 گھنٹے",
+    "description": "Module duration neural control"
+  },
+  "modules.walking.title": {
+    "message": "ہیومنائڈ واکنگ",
+    "description": "Module card title walking"
+  },
+  "modules.walking.description": {
+    "message": "دو پاؤں سے چلنے کے لیے ZMP پلاننگ اور ماڈل پریڈکٹو کنٹرول نافذ کریں۔",
+    "description": "Module card description walking"
+  },
+  "modules.walking.duration": {
+    "message": "8 گھنٹے",
+    "description": "Module duration walking"
+  },
+  "modules.hri.title": {
+    "message": "ہیومن-روبوٹ انٹریکشن",
+    "description": "Module card title HRI"
+  },
+  "modules.hri.description": {
+    "message": "قدرتی انٹریکشن سسٹمز ڈیزائن کریں، اسپِیچ ریکگنیشن، جیسچر انڈرسٹینڈنگ، اور جذباتی اظہار کے ساتھ۔",
+    "description": "Module card description HRI"
+  },
+  "modules.hri.duration": {
+    "message": "5 گھنٹے",
+    "description": "Module duration HRI"
+  },
+  "modules.integration.title": {
+    "message": "سسٹم انٹیگریشن",
+    "description": "Module card title system integration"
+  },
+  "modules.integration.description": {
+    "message": "تمام سب سسٹمز کو مکمل ہیومنائڈ پلیٹ فارم میں مناسب آرکیٹیکچر کے ساتھ یکجا کریں۔",
+    "description": "Module card description system integration"
+  },
+  "modules.integration.duration": {
+    "message": "12 گھنٹے",
+    "description": "Module duration system integration"
+  }
+}

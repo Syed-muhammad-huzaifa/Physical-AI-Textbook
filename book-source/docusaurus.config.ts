@@ -2,6 +2,11 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// Font imports for Robotics Lab theme
+// Space Grotesk - Headings and UI
+// Inter - Body text
+// JetBrains Mono - Code blocks
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
@@ -15,7 +20,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://syed-muhammad-huzaifa.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -23,16 +28,28 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Syed-muhammad-huzaifa', // Usually your GitHub org/user name.
-  projectName: 'Humanoid-And-Robotics-Textbook', // Usually your repo name.
+  projectName: 'Physical-AI-Textbook', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'ur'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en',
+      },
+      ur: {
+        label: 'اردو',
+        direction: 'rtl',
+        htmlLang: 'ur',
+      },
+    },
   },
 
   presets: [
@@ -89,7 +106,10 @@ const config: Config = {
           position: 'left',
           label: 'Textbook',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
         {
           href: 'https://github.com/Syed-muhammad-huzaifa/Humanoid-And-Robotics-Textbook',
           label: 'GitHub',
@@ -130,10 +150,6 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
               href: 'https://github.com/Syed-muhammad-huzaifa/Humanoid-And-Robotics-Textbook',
             },
@@ -144,7 +160,8 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismThemes.github,
+      additionalLanguages: ['bash', 'python', 'yaml', 'json', 'typescript'],
     },
   } satisfies Preset.ThemeConfig,
 };

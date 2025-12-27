@@ -1,0 +1,219 @@
+/**
+ * CSS Architecture Documentation
+ * Feature: 004-ui-ux-design
+ *
+ * This file documents the CSS conventions used in the Humanoid Robotics Textbook.
+ * It's a reference file - actual styles are defined in custom.css and variables.css.
+ */
+
+/* ==================== FILE STRUCTURE ==================== */
+
+/*
+book-source/src/css/
+├── custom.css           # Main theme file (loaded by Docusaurus via config)
+├── variables.css        # CSS custom properties / design tokens
+├── architecture.css     # This file - conventions documentation
+├── navbar.css           # Navbar component styles
+├── footer.css           # Footer component styles
+├── homepage.css         # Homepage specific styles
+├── modules.css          # Module card styles
+└── docs.css             # Documentation page styles
+*/
+
+/* ==================== IMPORT ORDER ==================== */
+
+/*
+In custom.css, imports should follow this order:
+
+1. CSS Variables
+   @import './variables.css';
+
+2. Base styles
+   /* Body, typography, global resets */
+
+3. Component styles
+   /* Navbar, Footer, Cards, etc. */
+
+4. Animations
+   /* Keyframes and animation classes */
+
+/* ==================== NAMING CONVENTION ==================== */
+
+/*
+BEM-lite naming with hr- prefix:
+
+Block
+  .hr-navbar { }
+
+Element
+  .hr-navbar__logo { }
+  .hr-navbar__link { }
+
+Modifier
+  .hr-navbar--transparent { }
+  .hr-navbar__link--active { }
+
+Variant suffix
+  .hr-button--primary { }
+  .hr-button--secondary { }
+*/
+
+/* ==================== CUSTOM PROPERTIES ==================== */
+
+/*
+All custom properties use hr- prefix to avoid conflicts:
+
+Colors
+  --hr-color-bg-primary
+  --hr-color-bg-secondary
+  --hr-color-text-primary
+  --hr-color-text-secondary
+  --hr-color-accent-primary
+  --hr-color-accent-secondary
+
+Typography
+  --hr-font-heading (Space Grotesk)
+  --hr-font-body (Inter)
+  --hr-font-code (JetBrains Mono)
+
+Spacing (8px base unit)
+  --hr-space-1 = 4px
+  --hr-space-2 = 8px
+  --hr-space-3 = 12px
+  --hr-space-4 = 16px
+  --hr-space-5 = 20px
+  --hr-space-6 = 24px
+  --hr-space-8 = 32px
+
+Transitions
+  --hr-transition-fast = 150ms
+  --hr-transition-normal = 300ms
+  --hr-transition-slow = 500ms
+*/
+
+/* ==================== BREAKPOINTS ==================== */
+
+/*
+Mobile first approach:
+
+Base styles (mobile)
+@media (min-width: 768px) { }  // Tablet
+@media (min-width: 996px) { }  // Desktop
+@media (min-width: 1400px) { } // Large screens
+
+Note: We use 768px and 996px to match Docusaurus defaults
+*/
+
+/* ==================== SPECIFICITY RULES ==================== */
+
+/*
+1. Use classes over IDs
+2. Avoid !important except for Docusaurus overrides
+3. Use :where() for lowering specificity when needed
+4. Docusaurus overrides may require !important
+
+Example Docusaurus override:
+  .navbar {
+    background: transparent !important;
+    backdrop-filter: blur(10px);
+  }
+*/
+
+/* ==================== ACCESSIBILITY REQUIREMENTS ==================== */
+
+/*
+1. Focus visible
+   :focus-visible {
+     outline: 2px solid var(--hr-color-accent-primary);
+     outline-offset: 2px;
+   }
+
+2. Reduced motion preference
+   @media (prefers-reduced-motion: reduce) {
+     *,
+     *::before,
+     *::after {
+       animation-duration: 0.01ms !important;
+       transition-duration: 0.01ms !important;
+     }
+   }
+
+3. Touch targets minimum 44x44px
+
+4. Minimum font size 16px on mobile
+
+5. Color contrast WCAG AA compliant
+   - Primary text: #EAF0FF on #06080F = 14.5:1 (AAA)
+   - Secondary text: #A9B4D0 on #06080F = 7.5:1 (AA)
+*/
+
+/* ==================== ANIMATION PRINCIPLES ==================== */
+
+/*
+Allowed animations:
+- Opacity fade
+- Transform (translateY, scale)
+- Box-shadow glow
+
+Forbidden:
+- Layout shifts
+- Color flashing
+- Rapid blinking
+
+Performance guidelines:
+- Use transform and opacity only
+- Use will-change sparingly
+- Respect prefers-reduced-motion
+*/
+
+/* ==================== COLOR RESTRICTIONS ==================== */
+
+/*
+No warm colors in UI elements:
+- No red/orange/yellow for decoration
+- Accents only: cyan (#22D3EE), blue (#60A5FA), violet (#A78BFA)
+- Warm colors only for: errors, warnings, destructive actions
+
+Background palette:
+- Primary: #06080F
+- Secondary: #0B1220
+- Tertiary: #10192E
+*/
+
+/* ==================== TYPOGRAPHY SCALE ==================== */
+
+/*
+font-size (rem-based for accessibility):
+  --hr-text-xs:    14px (0.875rem)
+  --hr-text-sm:    16px (1rem)
+  --hr-text-base:  17px (1.0625rem)
+  --hr-text-lg:    18px (1.125rem)
+  --hr-text-xl:    20px (1.25rem)
+  --hr-text-2xl:   24px (1.5rem)
+  --hr-text-3xl:   32px (2rem)
+  --hr-text-4xl:   40px (2.5rem)
+  --hr-text-5xl:   48px (3rem)
+
+line-height:
+  --hr-line-height-tight: 1.2 (headings)
+  --hr-line-height-normal: 1.6 (body - 1.6-1.8 per spec)
+  --hr-line-height-relaxed: 1.8 (long form)
+
+max-width:
+  --hr-max-width-text: 78ch (readability)
+*/
+
+/* ==================== COMPONENT CONTRACTS ==================== */
+
+/*
+Each component should define:
+1. HTML structure
+2. CSS class contract
+3. Interaction states (default, hover, focus, active)
+4. Accessibility requirements
+
+See contracts/ directory for component specifications:
+  - navbar.yaml
+  - homepage.yaml
+  - module-card.yaml
+*/

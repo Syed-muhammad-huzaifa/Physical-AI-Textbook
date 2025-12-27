@@ -5,7 +5,10 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "start:en": "docusaurus start --locale en",
+    "start:ur": "docusaurus start --locale ur",
     "build": "docusaurus build",
+    "serve:locales": "docusaurus build && docusaurus serve",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -18,12 +21,10 @@
     "@docusaurus/core": "3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
     "@mdx-js/react": "^3.0.0",
-    "better-auth": "^1.4.7",
-    "better-auth/react": "^1.4.7",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",

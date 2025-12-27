@@ -1,0 +1,225 @@
+/**
+ * Homepage Styles
+ * Feature: 004-ui-ux-design
+ * User Story 1: Homepage Hero Experience
+ */
+
+/* ==================== HOMEPAGE LAYOUT ==================== */
+
+.hr-homepage {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hr-color-bg-primary);
+  overflow: hidden;
+}
+
+/* ==================== ANIMATED BACKGROUND ==================== */
+
+.hr-homepage__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hr-homepage__lines {
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  opacity: 0.15;
+  animation: hr-lines-flow 20s linear infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hr-homepage__lines {
+    animation: none !important;
+    opacity: 0.05 !important;
+  }
+}
+
+/* ==================== HERO SECTION ==================== */
+
+.hr-hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--hr-space-8);
+  max-width: var(--hr-max-width-text);
+  margin: 0 auto;
+}
+
+/* ==================== HERO TYPOGRAPHY ==================== */
+
+.hr-hero__title {
+  font-family: var(--hr-font-heading);
+  font-size: var(--hr-text-4xl);
+  font-weight: 700;
+  color: var(--hr-color-text-primary);
+  margin-bottom: var(--hr-space-4);
+  line-height: var(--hr-line-height-tight);
+  letter-spacing: -0.02em;
+}
+
+.hr-hero__description {
+  font-family: var(--hr-font-body);
+  font-size: var(--hr-text-lg);
+  line-height: var(--hr-line-height-relaxed);
+  color: var(--hr-color-text-secondary);
+  margin-bottom: var(--hr-space-6);
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==================== CTA BUTTONS ==================== */
+
+.hr-hero__actions {
+  display: flex;
+  gap: var(--hr-space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Button base styles */
+.hr-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--hr-space-3) var(--hr-space-6);
+  font-family: var(--hr-font-body);
+  font-size: var(--hr-text-base);
+  font-weight: var(--hr-weight-medium);
+  border-radius: var(--hr-radius-md);
+  text-decoration: none;
+  transition: all var(--hr-transition-fast);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+/* Primary button */
+.hr-button--primary {
+  background: var(--hr-color-accent-primary);
+  color: var(--hr-color-bg-primary);
+}
+
+.hr-button--primary:hover {
+  background: #3dd9f6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
+}
+
+.hr-button--primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary button */
+.hr-button--secondary {
+  background: transparent;
+  color: var(--hr-color-text-primary);
+  border-color: var(--hr-color-border);
+}
+
+.hr-button--secondary:hover {
+  border-color: var(--hr-color-accent-primary);
+  color: var(--hr-color-accent-primary);
+  background: rgba(34, 211, 238, 0.05);
+}
+
+.hr-button--secondary:active {
+  background: rgba(34, 211, 238, 0.1);
+}
+
+/* Focus states for accessibility */
+.hr-button:focus-visible {
+  outline: 2px solid var(--hr-color-accent-primary);
+  outline-offset: 2px;
+}
+
+/* ==================== FEATURED MODULES (Optional) ==================== */
+
+.hr-featured {
+  position: relative;
+  z-index: 1;
+  padding: var(--hr-space-16) var(--hr-space-8);
+  max-width: var(--hr-max-width-content);
+  margin: 0 auto;
+}
+
+.hr-featured__title {
+  font-family: var(--hr-font-heading);
+  font-size: var(--hr-text-2xl);
+  font-weight: 600;
+  color: var(--hr-color-text-primary);
+  text-align: center;
+  margin-bottom: var(--hr-space-8);
+}
+
+.hr-featured__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--hr-space-6);
+}
+
+/* ==================== RESPONSIVE STYLES ==================== */
+
+/* Tablet */
+@media (min-width: 768px) {
+  .hr-hero__title {
+    font-size: var(--hr-text-5xl);
+  }
+
+  .hr-hero__description {
+    font-size: var(--hr-text-xl);
+  }
+
+  .hr-hero__actions {
+    gap: var(--hr-space-6);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hr-hero {
+    padding: var(--hr-space-6) var(--hr-space-4);
+  }
+
+  .hr-hero__title {
+    font-size: var(--hr-text-2xl);
+  }
+
+  .hr-hero__description {
+    font-size: var(--hr-text-base);
+  }
+
+  .hr-hero__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hr-button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hr-featured {
+    padding: var(--hr-space-8) var(--hr-space-4);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .hr-hero__title {
+    font-size: var(--hr-text-xl);
+  }
+
+  .hr-button {
+    padding: var(--hr-space-3) var(--hr-space-4);
+    font-size: var(--hr-text-sm);
+  }
+}
